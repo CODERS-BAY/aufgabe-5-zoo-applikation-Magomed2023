@@ -1,8 +1,24 @@
-﻿namespace ZooAPI.controller;
+﻿using MySqlConnector;
 
-public class DBConnection
+namespace ZooAPI.controller
 {
-    /*
-     * Implement and reuse database connection here
-     */
+    public class DBConnection
+    {
+        public MySqlConnection Connection { get; }
+
+        public DBConnection(string connectionString)
+        {
+            Connection = new MySqlConnection(connectionString);
+        }
+
+        public async Task OpenConnectionAsync()
+        {
+            await Connection.OpenAsync();
+        }
+
+        public async Task CloseConnectionAsync()
+        {
+            await Connection.CloseAsync();
+        }
+    }
 }
