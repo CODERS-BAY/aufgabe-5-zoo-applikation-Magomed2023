@@ -1,24 +1,44 @@
-﻿using MySqlConnector;
+﻿using System.Data;
+using MySqlConnector;
 
-namespace ZooAPI.controller
+namespace ZooAPI.Controller
 {
+    // Datenbankverbindungsklasse
     public class DBConnection
     {
-        public MySqlConnection Connection { get; }
+        private readonly string _connectionString; // Verbindungszeichenfolge zur Datenbank
 
-        public DBConnection(string connectionString)
+        // Konstruktor mit Konfiguration
+        public DBConnection(IConfiguration configuration)
         {
-            Connection = new MySqlConnection(connectionString);
+            _connectionString =
+                configuration.GetConnectionString("ZooDb"); // Verbindungszeichenfolge aus Konfiguration holen
         }
 
-        public async Task OpenConnectionAsync()
+        // Überladener Konstruktor mit Verbindungszeichenfolge und Konfiguration
+        public DBConnection(string connectionString, IConfiguration configuration)
         {
-            await Connection.OpenAsync();
+            _connectionString = connectionString;
         }
 
-        public async Task CloseConnectionAsync()
+        // Asynchrone Methode zur Herstellung einer sicheren Datenbankverbindung
+        public async Task<MySqlConnection> GetConnectionAsync()
         {
-            await Connection.CloseAsync();
+            if (string.IsNullOrWhiteSpace(_connectionString))
+            {
+                throw new Exception($"Verbindungszeichenfolge ist nicht definiert" + $".");
+            }
+
+            var conn = new MySqlConnection(_connectionString); // Neue Verbindung erstellen
+
+            await conn.OpenAsync(); // Verbindung asynchron öffnen
+
+            if (conn.State != ConnectionState.Open)
+            {
+                throw new Exception("Verbindung konnte nicht geöffnet werden.");
+            }
+
+            return conn; // Verbindung zurückgeben
         }
     }
 }

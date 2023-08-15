@@ -1,40 +1,20 @@
-﻿namespace ZooAPI.model
+﻿namespace ZooAPI.Model
 {
-    public class Animal : IComparable<Animal>
+    // Tier-Modell
+    public class Tier
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Species { get; set; }
-        public int Age { get; set; }
-        public string tierName { get; set; }
-        public string Nahrung { get; set; }
-        public int GehegeId { get; set; }
-
-        public int CompareTo(Animal other)
+        // Konstruktor
+        public Tier(int id, string gattung, string nahrung, int gehegeId)
         {
-            if (other == null) return 1;
-
-            return Name.CompareTo(other.Name);
+            Id = id; // Tier-ID
+            Gattung = gattung; // Tiergattung (z.B. Löwe, Tiger)
+            Nahrung = nahrung; // Nahrung des Tiers
+            GehegeId = gehegeId; // ID des Geheges, in dem das Tier sich befindet
         }
 
-        public override bool Equals(object obj)
-        {
-            if (obj == null || !(obj is Animal other))
-            {
-                return false;
-            }
-
-            return Id == other.Id;
-        }
-
-        public override int GetHashCode()
-        {
-            return Id;
-        }
-
-        public override string ToString()
-        {
-            return $"Id: {Id}, Name: {Name}, Species: {Species}, Age: {Age}";
-        }
+        public int Id { get; set; } // Tier-ID
+        public string Gattung { get; set; } // Tiergattung
+        public string Nahrung { get; set; } // Nahrung des Tiers
+        public int GehegeId { get; set; } // Gehege-ID
     }
 }
