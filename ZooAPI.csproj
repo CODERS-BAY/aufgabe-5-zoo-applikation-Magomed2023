@@ -13,4 +13,12 @@
       <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="frontend\src\components\Header\" />
+      <Folder Include="frontend\src\components\Sidebar\" />
+      <Folder Include="frontend\src\pages\About\" />
+      <Folder Include="frontend\src\pages\Home\" />
+      <Folder Include="frontend\src\utils\" />
+    </ItemGroup>
+
 </Project>

@@ -2,13 +2,13 @@ using Microsoft.AspNetCore.Mvc;
 using ZooAPI.Model;
 using ZooAPI.Service;
 
-namespace ZooAPI.Controller
+namespace ZooAPI.Controller // Namespace anpassen
 {
-    [ApiController]
+    [ApiController] // Controller als API-Controller deklarieren
     [Route("api/[controller]")] // Basispfad: api/kassierer
-    public class KassiererController : ControllerBase
+    public class KassiererController : ControllerBase // Controller erbt von ControllerBase
     {
-        private readonly KassiererService _service;
+        private readonly KassiererService _service; // KassiererService-Objekt
 
         // KassiererService Injektion
         public KassiererController(KassiererService service)
@@ -18,7 +18,7 @@ namespace ZooAPI.Controller
 
         // Ticketkauf: api/kassierer/buy
         [HttpPost("buy")]
-        public async Task<ActionResult<Ticket>> InsertTicket(Ticket ticket)
+        public async Task<ActionResult<Ticket>> InsertTicket(Ticket ticket) // Ticket-Objekt aus Request-Body
         {
             try
             {

@@ -11,14 +11,14 @@ namespace ZooAPI.Service
         private readonly IOptions<TicketPrices> _ticketPrices; // Ticketpreise
 
         // Konstruktor: DB & Ticketpreise Injektion
-        public KassiererService(DBConnection dbConnection, IOptions<TicketPrices> ticketPrices)
+        public KassiererService(DBConnection dbConnection, IOptions<TicketPrices> ticketPrices) // Konstruktor
         {
             _dbConnection = dbConnection;
             _ticketPrices = ticketPrices;
         }
 
         // Ticketkauf
-        public async Task BuyTicket(TicketType type)
+        public async Task BuyTicket(TicketType type) // Tickettyp
         {
             // Ticketpreis bestimmen
             var ticketPrice = type switch
@@ -42,7 +42,7 @@ namespace ZooAPI.Service
         }
 
         // Alle verkauften Tickets abrufen
-        public async Task<List<Ticket>> GetAllSoldTicketsAsync()
+        public async Task<List<Ticket>> GetAllSoldTicketsAsync() // Liste von Tickets
         {
             var result = new List<Ticket>();
             await using var conn = await _dbConnection.GetConnectionAsync();
@@ -68,7 +68,7 @@ namespace ZooAPI.Service
         }
 
         // Ticket in DB einfügen
-        public async Task InsertTicketAsync(Ticket ticket)
+        public async Task InsertTicketAsync(Ticket ticket) // Ticket
         {
             await using var conn = await _dbConnection.GetConnectionAsync();
             await using var command = conn.CreateCommand();

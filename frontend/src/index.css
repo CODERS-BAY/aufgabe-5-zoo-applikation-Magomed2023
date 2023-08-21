@@ -1,0 +1,81 @@
+:root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    color-scheme: light white;
+    color: #2e2e2e; /* Dark text color for better contrast */
+    background-color: #f4f1e8; /* Light tan background for a natural feel */
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+}
+
+a {
+    font-weight: 500;
+    color: #2e2e2e; /* Green color reminiscent of foliage */
+    text-decoration: inherit;
+}
+a:hover {
+    color: #ADFF2F; /* Darker green for hover effect */
+}
+
+body {
+    margin: 10px;
+    display: flex;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
+}
+
+h1 {
+    font-size: 3.2em;
+    line-height: 1.1;
+}
+
+button {
+    border-radius: 8px;
+    border: 1px solid #ADFF2F; /* Green border */
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #e7e3d6; /* Light tan for buttons */
+    cursor: pointer;
+    transition: border-color 0.25s;
+}
+button:hover {
+    border-color: #ADFF2F; /* Darker green for hover effect */
+}
+button:focus,
+button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        color: #ADFF2F; /* Keeping the dark text color */
+        background-color: #f4f1e8; /* Keeping the light tan background */
+    }
+    a:hover {
+        color: #ADFF2F; /* Keeping the darker green for hover effect */
+    }
+    button {
+        background-color: #e7e3d6; /* Keeping the light tan for buttons */
+    }
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        color: #f4f1e8; /* Light text color for better contrast */
+        background-color: #2e2e2e; /* Dark background color for a natural feel */
+    }
+    a:hover {
+        color: #ADFF2F; /* Lighter green for hover effect */
+    }
+    button {
+        background-color: #ADFF2F; /* Darker green for buttons */
+    }
+}

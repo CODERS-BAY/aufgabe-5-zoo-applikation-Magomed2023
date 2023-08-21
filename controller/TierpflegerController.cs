@@ -32,7 +32,7 @@ namespace ZooAPI.Controller
 
         // Endpoint: Tier aktualisieren
         [HttpPut("tiere/{id}/{column}")]
-        public async Task<IActionResult> UpdateTier(int id, Tier column)
+        public async Task<IActionResult> UpdateTier(int id, Tier column) // id = Tier-ID, column = Spalte, die aktualisiert werden soll
         {
             try
             {

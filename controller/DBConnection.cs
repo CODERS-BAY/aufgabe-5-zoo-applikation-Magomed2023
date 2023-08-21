@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using MySqlConnector;
 
-namespace ZooAPI.Controller
+namespace ZooAPI.Controller // Namespace anpassen
 {
     // Datenbankverbindungsklasse
     public class DBConnection
